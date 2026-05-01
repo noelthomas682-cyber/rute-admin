@@ -46,9 +46,6 @@ export default function SystemHealth() {
 
     try {
       // Load cron jobs from pg_cron
-      const { data: cronData, error: cronError } = await supabase
-        .rpc('get_cron_jobs')
-        .select('*')
 
       // Fallback — query cron.job directly if RPC not available
       const { data: jobs } = await supabase
