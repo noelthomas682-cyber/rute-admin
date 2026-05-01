@@ -47,12 +47,10 @@ export default function SystemHealth() {
     try {
       // Load cron jobs from pg_cron
 
-      // Fallback — query cron.job directly if RPC not available
-      const { data: jobs } = await supabase
-        .from('cron.job' as any)
-        .select('jobname, schedule, active')
-        .order('jobname')
-
+      // Query cron jobs via RPC function (get_cron_jobs)
+      // Direct cron.job table access is blocked by Supabase security
+      // RPC uses security definer to bypass this
+      const { data: jobs } = await supabase.rpc('get_cron_jobs')
       if (jobs) setCronJobs(jobs as CronJob[])
 
       // Get row counts for key tables
