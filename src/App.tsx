@@ -22,7 +22,7 @@ import Login from './pages/Login'
 import Overview from './pages/Overview'
 import Universities from './pages/Universities'
 import Detection from './pages/Detection'
-import Users from './pages/Users'
+import UsersPage from './pages/Users'
 
 // Placeholder for sections not yet built
 function ComingSoon({ title }: { title: string }) {
@@ -66,7 +66,7 @@ export default function App() {
             <Route path="/"             element={<Overview />} />
             <Route path="/universities" element={<Universities />} />
             <Route path="/detection"    element={<Detection />} />
-            <Route path="/users"        element={<Users />} />
+            <Route path="/users"        element={<UsersPage />} />
             <Route path="/cohorts"      element={<ComingSoon title="Cohort Analysis" />} />
             <Route path="/network"      element={<ComingSoon title="Network Density" />} />
             <Route path="/lms-health"   element={<ComingSoon title="LMS Health" />} />
