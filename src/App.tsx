@@ -21,6 +21,7 @@ import Sidebar from './components/Sidebar'
 import Login from './pages/Login'
 import Overview from './pages/Overview'
 import Universities from './pages/Universities'
+import Detection from './pages/Detection'
 
 // Placeholder component for sections not yet built
 // Replace each with the real page as it's built
@@ -72,19 +73,19 @@ export default function App() {
         {/* Main content area — offset by sidebar width */}
         <main className="ml-56 flex-1 min-h-screen overflow-y-auto">
           <Routes>
-            <Route path="/"            element={<Overview />} />
+            <Route path="/"             element={<Overview />} />
             <Route path="/universities" element={<Universities />} />
-            <Route path="/detection"   element={<ComingSoon title="Detection Monitor" />} />
-            <Route path="/users"       element={<ComingSoon title="User Analytics" />} />
-            <Route path="/cohorts"     element={<ComingSoon title="Cohort Analysis" />} />
-            <Route path="/network"     element={<ComingSoon title="Network Density" />} />
-            <Route path="/lms-health"  element={<ComingSoon title="LMS Health" />} />
-            <Route path="/bulletin"    element={<ComingSoon title="Bulletin & Feed Manager" />} />
-            <Route path="/b2b"         element={<ComingSoon title="B2B Pipeline" />} />
-            <Route path="/system"      element={<ComingSoon title="System Health" />} />
-            <Route path="/compliance"  element={<ComingSoon title="Compliance Centre" />} />
-            <Route path="/acquisition" element={<ComingSoon title="Acquisition Dashboard" />} />
-            <Route path="*"            element={<Navigate to="/" replace />} />
+            <Route path="/detection"    element={<Detection />} />
+            <Route path="/users"        element={<ComingSoon title="User Analytics" />} />
+            <Route path="/cohorts"      element={<ComingSoon title="Cohort Analysis" />} />
+            <Route path="/network"      element={<ComingSoon title="Network Density" />} />
+            <Route path="/lms-health"   element={<ComingSoon title="LMS Health" />} />
+            <Route path="/bulletin"     element={<ComingSoon title="Bulletin & Feed Manager" />} />
+            <Route path="/b2b"          element={<ComingSoon title="B2B Pipeline" />} />
+            <Route path="/system"       element={<ComingSoon title="System Health" />} />
+            <Route path="/compliance"   element={<ComingSoon title="Compliance Centre" />} />
+            <Route path="/acquisition"  element={<ComingSoon title="Acquisition Dashboard" />} />
+            <Route path="*"             element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
