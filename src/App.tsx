@@ -22,9 +22,9 @@ import Login from './pages/Login'
 import Overview from './pages/Overview'
 import Universities from './pages/Universities'
 import Detection from './pages/Detection'
+import Users from './pages/Users'
 
-// Placeholder component for sections not yet built
-// Replace each with the real page as it's built
+// Placeholder for sections not yet built
 function ComingSoon({ title }: { title: string }) {
   return (
     <div className="p-8 flex items-center justify-center h-full">
@@ -39,7 +39,6 @@ function ComingSoon({ title }: { title: string }) {
 export default function App() {
   const { user, isAdmin, loading, signOut } = useAdmin()
 
-  // Show nothing while auth resolves — prevents flash of wrong content
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
@@ -48,7 +47,6 @@ export default function App() {
     )
   }
 
-  // Not authenticated or not admin — show login
   if (!user || !isAdmin) {
     return (
       <BrowserRouter>
@@ -59,24 +57,16 @@ export default function App() {
     )
   }
 
-  // Authenticated admin — show full panel with sidebar
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-gray-950">
-
-        {/* Fixed left sidebar — always visible */}
-        <Sidebar
-          userEmail={user.email || ''}
-          onSignOut={signOut}
-        />
-
-        {/* Main content area — offset by sidebar width */}
+        <Sidebar userEmail={user.email || ''} onSignOut={signOut} />
         <main className="ml-56 flex-1 min-h-screen overflow-y-auto">
           <Routes>
             <Route path="/"             element={<Overview />} />
             <Route path="/universities" element={<Universities />} />
             <Route path="/detection"    element={<Detection />} />
-            <Route path="/users"        element={<ComingSoon title="User Analytics" />} />
+            <Route path="/users"        element={<Users />} />
             <Route path="/cohorts"      element={<ComingSoon title="Cohort Analysis" />} />
             <Route path="/network"      element={<ComingSoon title="Network Density" />} />
             <Route path="/lms-health"   element={<ComingSoon title="LMS Health" />} />
@@ -88,7 +78,6 @@ export default function App() {
             <Route path="*"             element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-
       </div>
     </BrowserRouter>
   )
