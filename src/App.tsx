@@ -2,12 +2,6 @@
 //
 // PURPOSE: Root component and router for the admin panel.
 // Handles auth gate — redirects to Login if not authenticated or not admin.
-// All routes are wrapped in the admin layout (Sidebar + main content area).
-//
-// ROUTE PROTECTION:
-//   - useAdmin checks Supabase session + profiles.use_mode = 'admin'
-//   - Loading state shows blank screen while auth resolves
-//   - Non-admin users see Login page regardless of route
 //
 // ADDING A NEW SECTION:
 //   1. Create src/pages/NewPage.tsx
@@ -23,8 +17,8 @@ import Overview from './pages/Overview'
 import Universities from './pages/Universities'
 import Detection from './pages/Detection'
 import UsersPage from './pages/Users'
+import SystemHealth from './pages/SystemHealth'
 
-// Placeholder for sections not yet built
 function ComingSoon({ title }: { title: string }) {
   return (
     <div className="p-8 flex items-center justify-center h-full">
@@ -72,7 +66,7 @@ export default function App() {
             <Route path="/lms-health"   element={<ComingSoon title="LMS Health" />} />
             <Route path="/bulletin"     element={<ComingSoon title="Bulletin & Feed Manager" />} />
             <Route path="/b2b"          element={<ComingSoon title="B2B Pipeline" />} />
-            <Route path="/system"       element={<ComingSoon title="System Health" />} />
+            <Route path="/system"       element={<SystemHealth />} />
             <Route path="/compliance"   element={<ComingSoon title="Compliance Centre" />} />
             <Route path="/acquisition"  element={<ComingSoon title="Acquisition Dashboard" />} />
             <Route path="*"             element={<Navigate to="/" replace />} />
